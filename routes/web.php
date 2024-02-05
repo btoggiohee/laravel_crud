@@ -28,4 +28,6 @@ Route::prefix('student')->group(function(){
     Route::get('edit/{id}/',[StudentController::class,'edit_index'])->name('student.edit_index');
     Route::post('edit/{id}/',[StudentController::class,'edit_finish'])->name('student.edit_finish');
 
+    Route::post('delete/{id}/',[StudentController::class,'us_delete'])->name('student.us_delete');
+    
 });

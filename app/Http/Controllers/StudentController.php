@@ -49,4 +49,9 @@ class StudentController extends Controller
         ]);
         return redirect()->route('student.getIndex');
     }
+    public function us_delete($id){
+        $student=Student::FindOrFail($id);
+        $student->delete();
+        return redirect()->route('student.getIndex');
+    }
 }
