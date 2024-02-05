@@ -17,4 +17,15 @@ use App\Http\Controllers\StudentController;
 Route::get('/', function () {
     return view('welcome');
 });
-Route::get('student/list',[StudentController::class,'getIndex']);
+
+Route::prefix('student')->group(function(){
+    Route::get('list',[StudentController::class,'getIndex'])->name('student.getIndex');
+    Route::get('new',[StudentController::class,'new_index'])->name('student.new_index');
+    Route::patch('new',[Student::class,'new_confirm']);
+    Route::post('new',[StudentController::class,'new_finish'])->name('student.new_finish');
+
+
+    Route::get('edit/{id}/',[StudentController::class,'edit_index'])->name('student.edit_index');
+    Route::post('edit/{id}/',[StudentController::class,'edit_finish'])->name('student.edit_finish');
+
+});
